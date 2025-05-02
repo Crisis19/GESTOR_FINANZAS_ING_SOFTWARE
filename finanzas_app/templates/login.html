@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión</title>
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+    <div class="formulario">
+        <h1>Inicio de sesión</h1>
+        <form method="post" action="/registro/login">
+            <div class="username">
+                <input type="text" name="correo" required>
+                <label>Nombre de usuario</label>
+            </div>
+            <div class="Contraseña">
+                <input type="password" name="password" required>
+                <label>Contraseña</label>
+            </div>
+            <div class="recordar">
+                ¿Olvidó su contraseña?
+            </div>
+            <button type="submit">Iniciar sesion</button>
+        </form>
+            <div class="registar"> 
+                Quiero <a href="/registro/">registrarme</a>
+            </div>
+    </div>
+</body>
+</html>
