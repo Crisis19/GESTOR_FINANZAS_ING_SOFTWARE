@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crear Meta Financiera</title>
+
   <link rel="stylesheet" href="../static/css/presupuesto.css">
 </head>
 <body>
   <div class="contenedor">
     <div id="parte-superior">
-      <h2>
-        ¿Deseas añadir o quitar presupuesto?
-      </h2>
-
+      <h2>¿Deseas añadir o quitar presupuesto?</h2>
     </div>
-      <button type="submit">Añadir presupuesto</button>
-      <button type="submit">Quitar presupuesto</button>
-  </div>
 
+    <div class="botones">
+      <a href="{% url 'añadir' %}"><button>Añadir presupuesto</button></a>
+      <a href="{% url 'quitar' %}"><button>Quitar presupuesto</button></a>
+    </div>
+  </div>
 </body>
 </html>
