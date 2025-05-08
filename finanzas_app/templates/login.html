@@ -9,19 +9,17 @@
 <body>
     <div class="formulario">
         <h1>Inicio de sesión</h1>
-        <form method="post" action="/registro/login">
+        <form method="post" action="/login/">
+            {% csrf_token %}
             <div class="username">
-                <input type="text" name="correo" required>
+                <input type="text" name="username" required>
                 <label>Nombre de usuario</label>
             </div>
             <div class="Contraseña">
                 <input type="password" name="password" required>
                 <label>Contraseña</label>
             </div>
-            <div class="recordar">
-                ¿Olvidó su contraseña?
-            </div>
-            <button type="submit">Iniciar sesion</button>
+            <button type="submit">Iniciar sesión</button>
         </form>
             <div class="registar"> 
                 Quiero <a href="/registro/">registrarme</a>
