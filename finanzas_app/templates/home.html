@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Gestor de Finanzas</title>
+    <link rel="stylesheet" href="../static/css/home.css">       
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a tu Gestor de Finanzas, {{ user.username }}</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'transacciones' %}">Transacciones</a></li>
+                <li><a href="{% url 'categorias' %}">Categorías</a></li>
+                <li><a href="{% url 'presupuesto' %}">Presupuesto</a></li>
+                <li><a href="{% url 'metas' %}">Metas</a></li>
+                <li><a href="">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Resumen de tus finanzas</h2>
+        <div>
+            <p><strong>Ingresos Totales:</strong> ${{ ingresos }}</p>
+            <p><strong>Gastos Totales:</strong> ${{ gastos }}</p>
+            <p><strong>Balance:</strong> ${{ balance }}</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Transacciones del mes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                    <th>Monto</th>
+                    <th>Categoría</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaccion in transacciones_mes %}
+                    <tr>
+                        <td>{{ transaccion.fecha }}</td>
+                        <td>{{ transaccion.tipo }}</td>
+                        <td>{{ transaccion.descripcion }}</td>
+                        <td>${{ transaccion.monto }}</td>
+                        <td>{{ transaccion.categoria }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No hay transacciones este mes.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>
