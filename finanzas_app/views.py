@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .models import Transaccion
+from .models import Transaccion, Categoria
 
 @login_required
 def home(request):
@@ -45,6 +45,10 @@ def quitar(request):
 
 def metas(request):
     return render(request, 'metas.html')
+
+def categoria(request):
+    categorias = Categoria.objects.filter(usuario=request.user)
+    return render(request, 'categoria.html', {'categorias': categorias})
 
 def presupuesto(request):
     return render(request, 'presupuesto.html')

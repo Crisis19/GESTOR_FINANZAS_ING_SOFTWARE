@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .model import login
+from .model import login, categoria
 
 urlpatterns = [
     path('', views.login_view, name='login'),
@@ -13,4 +13,6 @@ urlpatterns = [
     path('metas/', views.metas, name='metas'),
     path('presupuesto/', views.presupuesto, name='presupuesto'),
     path('categorias/', views.categoria, name='categorias'),
+    path('crear_categoria/', categoria.crear_categoria, name='crear_categoria'),
+    path('definir_monto_maximo/', categoria.definir_monto_maximo, name='definir_monto_maximo'),
 ]

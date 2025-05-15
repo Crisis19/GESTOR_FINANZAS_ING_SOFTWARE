@@ -15,6 +15,9 @@
         <!-- Categorías generadas dinámicamente -->
         <li class="categoria-item">Alimentación</li>
         <li class="categoria-item">Transporte</li>
+        {% for categoria in categorias %}
+          <li class="categoria-item">{{ categoria.nombre }}</li>
+        {% endfor %}
         <!-- Puedes añadir más -->
       </ul>
     </div>
@@ -22,7 +25,8 @@
     <!-- Panel derecho -->
     <div class="panel-derecho">
       <h2>Definir Monto Máximo</h2>
-      <form id="form-monto">
+      <form id="form-monto" method="post" action="{% url 'definir_monto_maximo' %}">
+        {% csrf_token %}
         <label for="categoria">Categoría:</label>
         <input type="text" id="categoria" name="categoria" readonly />
 

@@ -6,6 +6,27 @@ const formMonto = document.getElementById("form-monto");
 
 // Función para crear un nuevo elemento de categoría
 function crearCategoria(nombre) {
+  console.log("Creando categoría:", nombre);
+  fetch("/crear_categoria/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ nombre: nombre }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error al crear la categoría");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Categoría creada:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("No se pudo crear la categoría.");
+    });
   const li = document.createElement("li");
   li.textContent = nombre;
   li.classList.add("categoria-item");
@@ -35,23 +56,12 @@ btnNuevaCategoria.addEventListener("click", () => {
   }
 });
 
-// Evento de guardar monto máximo
-formMonto.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const categoria = inputCategoria.value;
-  const monto = document.getElementById("monto-maximo").value;
-
-  if (!categoria) {
-    alert("Selecciona una categoría primero.");
-    return;
+// Delegación de eventos para los elementos <li>
+listaCategorias.addEventListener("click", (event) => {
+  // Verifica si el clic ocurrió en un elemento <li>
+  if (event.target && event.target.tagName === "LI") {
+    const nombre = event.target.textContent; // Obtén el texto del <li> clickeado
+    inputCategoria.value = nombre; // Asigna el valor al input
   }
-
-  if (!monto || isNaN(monto) || Number(monto) <= 0) {
-    alert("Ingresa un monto válido.");
-    return;
-  }
-
-  alert(`Monto máximo de $${monto} definido para "${categoria}".`);
-  formMonto.reset();
 });
+
