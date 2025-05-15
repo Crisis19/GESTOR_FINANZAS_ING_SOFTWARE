@@ -24,4 +24,4 @@ def crear_categoria(request):
 
 def consultar_categoria(request):
     categorias = Categoria.objects.filter(usuario=request.user)
-    return render(request, 'consultar_categoria.html', {'categorias': categorias})
+    return render(request, 'categoria.html', {'categorias': categorias})
