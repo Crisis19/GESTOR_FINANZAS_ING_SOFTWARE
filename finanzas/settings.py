@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'finanzas_app',  # Asegúrate de que tu aplicación esté registrada aquí
 ]
 
 MIDDLEWARE = [
