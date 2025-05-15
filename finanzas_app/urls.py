@@ -5,6 +5,7 @@ from .model import login, categoria
 urlpatterns = [
     path('', views.login_view, name='login'),
     path('singin/', login.registro, name='singin'),
+    path('cerrar_sesion/', login.cerrar_sesion, name='cerrar_sesion'),
     path('login/', login.iniciar_sesion),
     path('home/', views.home, name='home'),
     path('registro/', views.registro, name='registro'),
