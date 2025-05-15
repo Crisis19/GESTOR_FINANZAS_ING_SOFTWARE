@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transacciones</title>
+    <link rel="stylesheet" href="{% static '/css/transacciones.css' %}">
+</head>
+<body>
+    <h1>Transacciones</h1>
+
+    <h2>Agregar Transacción</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+
+    <h2>Lista de Transacciones</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Tipo</th>
+                <th>Categoría</th>
+                <th>Monto</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaccion in transacciones %}
+            <tr>
+                <td>{{ transaccion.fecha }}</td>
+                <td>{{ transaccion.tipo }}</td>
+                <td>{{ transaccion.categoria }}</td>
+                <td>{{ transaccion.monto }}</td>
+                <td>{{ transaccion.descripcion }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

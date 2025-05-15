@@ -5,7 +5,10 @@ from .model import login, categoria
 urlpatterns = [
     path('', views.login_view, name='login'),
     path('singin/', login.registro, name='singin'),
+<<<<<<< HEAD
     path('cerrar_sesion/', login.cerrar_sesion, name='cerrar_sesion'),
+=======
+>>>>>>> 343d669 (Transacciones)
     path('login/', login.iniciar_sesion),
     path('home/', views.home, name='home'),
     path('registro/', views.registro, name='registro'),
@@ -16,4 +19,8 @@ urlpatterns = [
     path('categorias/', views.categoria, name='categorias'),
     path('crear_categoria/', categoria.crear_categoria, name='crear_categoria'),
     path('definir_monto_maximo/', categoria.definir_monto_maximo, name='definir_monto_maximo'),
+<<<<<<< HEAD
+=======
+    path('transacciones/', views.transacciones, name='transacciones'),
+>>>>>>> 343d669 (Transacciones)
 ]

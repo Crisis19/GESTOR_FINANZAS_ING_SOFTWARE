@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Transaccion, Categoria
+from .models import TransaccionForm
 
 @login_required
 def home(request):
@@ -52,3 +54,20 @@ def categoria(request):
 
 def presupuesto(request):
     return render(request, 'presupuesto.html')
+
+
+
+def transacciones(request):
+    if request.method == 'POST':
+        form = TransaccionForm(request.POST)
+        if form.is_valid():
+            transaccion = form.save(commit=False)
+            transaccion.usuario = request.user
+            transaccion.save()
+            messages.success(request, 'Transacción guardada con éxito.')
+            return redirect('transacciones')
+    else:
+        form = TransaccionForm()
+
+    transacciones = Transaccion.objects.filter(usuario=request.user).order_by('-fecha')
+    return render(request, 'transacciones.html', {'form': form, 'transacciones': transacciones})
