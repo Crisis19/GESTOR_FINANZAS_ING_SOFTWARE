@@ -12,4 +12,5 @@ urlpatterns = [
     path('quitar/', views.quitar, name='quitar'),
     path('metas/', views.metas, name='metas'),
     path('presupuesto/', views.presupuesto, name='presupuesto'),
+    path('categorias/', views.categoria, name='categorias'),
 ]
