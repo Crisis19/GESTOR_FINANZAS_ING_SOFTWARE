@@ -1,0 +1,101 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.contenedor-categorias {
+  display: flex;
+  max-width: 1000px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+  overflow: hidden;
+}
+
+.panel-izquierdo {
+  width: 40%;
+  background-color: #e8f7f0;
+  padding: 30px;
+  box-sizing: border-box;
+  border-right: 2px solid #d3f0e2;
+}
+
+.panel-derecho {
+  width: 60%;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background-color: #5cd89f;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #4ac88e;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.categoria-item {
+  background-color: #ffffff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.categoria-item:hover {
+  border-color: #5cd89f;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: #5cd89f;
+  outline: none;
+}

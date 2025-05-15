@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestionar Categorías</title>
+  <link rel="stylesheet" href="../static/css/categoria.css" />
+</head>
+<body>
+  <div class="contenedor-categorias">
+    <!-- Panel izquierdo -->
+    <div class="panel-izquierdo">
+      <button id="btn-nueva-categoria">+ Añadir Categoría</button>
+      <ul id="lista-categorias">
+        <!-- Categorías generadas dinámicamente -->
+        <li class="categoria-item">Alimentación</li>
+        <li class="categoria-item">Transporte</li>
+        <!-- Puedes añadir más -->
+      </ul>
+    </div>
+
+    <!-- Panel derecho -->
+    <div class="panel-derecho">
+      <h2>Definir Monto Máximo</h2>
+      <form id="form-monto">
+        <label for="categoria">Categoría:</label>
+        <input type="text" id="categoria" name="categoria" readonly />
+
+        <label for="monto-maximo">Monto máximo ($):</label>
+        <input type="number" id="monto-maximo" name="monto-maximo" required />
+
+        <button type="submit">Guardar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../static/js/categoria.js"></script>
+</body>
+</html>
