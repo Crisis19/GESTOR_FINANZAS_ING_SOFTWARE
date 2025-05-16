@@ -1,9 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-<<<<<<< HEAD
-=======
 from django import forms
->>>>>>> 343d669 (Transacciones)
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100)
@@ -46,9 +43,6 @@ class PerfilUsuario(models.Model):
 
     def __str__(self):
         return self.user.username
-<<<<<<< HEAD
-    
-=======
     
 
 class TransaccionForm(forms.ModelForm):
@@ -58,4 +52,3 @@ class TransaccionForm(forms.ModelForm):
         widgets = {
             'fecha': forms.DateInput(attrs={'type': 'date'}),
         }
->>>>>>> 343d669 (Transacciones)

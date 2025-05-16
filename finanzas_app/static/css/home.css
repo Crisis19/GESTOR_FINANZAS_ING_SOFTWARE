@@ -169,6 +169,17 @@ button:hover {
     background-color: #4fa87b;
 }
 
+.graficos {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.graphs{
+    width: 400px !important;
+    height: 400px !important;
+}
+
 /* Medios para dispositivos móviles */
 @media screen and (max-width: 768px) {
     nav ul li {
