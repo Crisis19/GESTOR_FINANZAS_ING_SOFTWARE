@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'finanzas.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bwt4yecumnbtczpgr5cc',  # Nombre de la base de datos
+        'USER': 'uynhtypdgyuputxd',       # Usuario de la base de datos
+        'PASSWORD': 'm2bc0VycF2UlwYH2HAL8',  # Contraseña del usuario
+        'HOST': 'bwt4yecumnbtczpgr5cc-mysql.services.clever-cloud.com',  # Host del servidor MySQL
+        'PORT': '3306',                   # Puerto de conexión (3306 es el predeterminado para MySQL)
     }
 }
 

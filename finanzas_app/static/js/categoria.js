@@ -2,11 +2,12 @@
 const btnNuevaCategoria = document.getElementById("btn-nueva-categoria");
 const listaCategorias = document.getElementById("lista-categorias");
 const inputCategoria = document.getElementById("categoria");
+const inputMonto = document.getElementById("monto-maximo");
 const formMonto = document.getElementById("form-monto");
+var categorias = {};
 
 // Función para crear un nuevo elemento de categoría
 function crearCategoria(nombre) {
-  console.log("Creando categoría:", nombre);
   fetch("/crear_categoria/", {
     method: "POST",
     headers: {
@@ -34,6 +35,7 @@ function crearCategoria(nombre) {
   // Agrega el evento de clic para seleccionar la categoría
   li.addEventListener("click", () => {
     inputCategoria.value = nombre;
+    inputMonto.value = ""; // Limpiar el campo de monto al seleccionar una categoría
   });
 
   listaCategorias.appendChild(li);
@@ -62,6 +64,7 @@ listaCategorias.addEventListener("click", (event) => {
   if (event.target && event.target.tagName === "LI") {
     const nombre = event.target.textContent; // Obtén el texto del <li> clickeado
     inputCategoria.value = nombre; // Asigna el valor al input
+    inputMonto.value = ""; // Limpiar el campo de monto al seleccionar una categoría
   }
 });
 

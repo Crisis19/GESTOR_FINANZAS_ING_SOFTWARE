@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.http import JsonResponse
 from django.db.models import Sum, Q
-from .models import Transaccion, Categoria
+from .models import Transaccion, Categoria, UsuarioCategoria
 from .models import TransaccionForm
 
 @login_required
@@ -51,8 +51,8 @@ def metas(request):
     return render(request, 'metas.html')
 
 def categoria(request):
-    categorias = Categoria.objects.filter(usuario=request.user | Q(es_predeterminada=True))
-    return render(request, 'categoria.html', {'categorias': categorias})
+    usuario_categorias = UsuarioCategoria.objects.filter(usuario=request.user).select_related('categoria')
+    return render(request, 'categoria.html', {'usuario_categorias': usuario_categorias})
 
 def presupuesto(request):
     return render(request, 'presupuesto.html')
