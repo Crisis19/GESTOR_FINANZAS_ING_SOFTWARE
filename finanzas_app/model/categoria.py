@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.db.models import Q
-from ..models import Categoria, UsuarioCategoria
+from ..models import Categoria
 
 @csrf_exempt
 def crear_categoria(request):
@@ -35,27 +35,25 @@ def definir_monto_maximo(request):
         nombre_categoria = request.POST.get('categoria')
         monto_maximo = request.POST.get('monto-maximo')
 
-        # Buscar la categoría
-        categoria = Categoria.objects.filter(nombre=nombre_categoria).first()
+        # Buscar la categoría específica del usuario o una categoría predeterminada
+        categoria = Categoria.objects.filter(
+            nombre=nombre_categoria
+        ).filter(
+            Q(usuario_id=request.user.id) | Q(es_predeterminada=True)
+        ).first()
 
         if not categoria:
             messages.error(request, 'La categoría no existe.')
             return redirect('categorias')
 
-        # Buscar o crear la relación UsuarioCategoria
-        usuario_categoria, created = UsuarioCategoria.objects.get_or_create(
-            usuario=request.user,
-            categoria=categoria
-        )
-
         # Actualizar el monto máximo
-        usuario_categoria.monto_max = monto_maximo
-        usuario_categoria.save()
+        categoria.monto_max = monto_maximo
+        categoria.save()
         messages.success(request, 'Monto máximo definido con éxito.')
         return redirect('categorias')
 
     return redirect('categorias')
 
 def consultar_categoria(request):
-    usuario_categorias = UsuarioCategoria.objects.filter(usuario=request.user).select_related('categoria')
-    return render(request, 'categoria.html', {'usuario_categorias': usuario_categorias})
+    categorias = Categoria.objects.filter(usuario=request.user)
+    return render(request, 'categoria.html', {'categorias': categorias})

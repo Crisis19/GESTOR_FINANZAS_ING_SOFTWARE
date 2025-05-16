@@ -7,19 +7,16 @@
   <link rel="stylesheet" href="../static/css/categoria.css" />
 </head>
 <body>
+  {% include 'header.html' %}
   <div class="contenedor-categorias">
     <!-- Panel izquierdo -->
     <div class="panel-izquierdo">
       <button id="btn-nueva-categoria">+ Añadir Categoría</button>
       <ul id="lista-categorias">
         <!-- Categorías generadas dinámicamente -->
-        <ul>
-          {% for usuario_categoria in usuario_categorias %}
-              <li class="categoria-item" data-categoria-id="{{ usuario_categoria.categoria.id }}">
-                  {{ usuario_categoria.categoria.nombre }} - Monto máximo: ${{ usuario_categoria.monto_max }}
-              </li>
-          {% endfor %}
-      </ul>
+        {% for categoria in categorias %}
+          <li class="categoria-item">{{ categoria.nombre }}</li>
+        {% endfor %}
         <!-- Puedes añadir más -->
       </ul>
     </div>

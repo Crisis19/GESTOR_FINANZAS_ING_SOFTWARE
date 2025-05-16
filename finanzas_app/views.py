@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
+from django.http import JsonResponse
+from django.db.models import Sum, Q
 from .models import Transaccion, Categoria
 from .models import TransaccionForm
 
@@ -49,13 +51,34 @@ def metas(request):
     return render(request, 'metas.html')
 
 def categoria(request):
-    categorias = Categoria.objects.filter(usuario=request.user)
+    categorias = Categoria.objects.filter(
+        Q(usuario_id=request.user.id) | Q(es_predeterminada=True)
+    )
     return render(request, 'categoria.html', {'categorias': categorias})
 
 def presupuesto(request):
     return render(request, 'presupuesto.html')
 
+def graficos(request):
+    # Filtrar las transacciones del usuario actual
+    gastos_por_categoria = Transaccion.objects.filter(
+        usuario=request.user, tipo='gasto'
+    ).values('categoria__nombre').annotate(total=Sum('monto'))
 
+    ingresos = Transaccion.objects.filter(
+        usuario=request.user, tipo='ingreso'
+    ).aggregate(total=Sum('monto'))['total'] or 0
+
+    gastos = Transaccion.objects.filter(
+        usuario=request.user, tipo='gasto'
+    ).aggregate(total=Sum('monto'))['total'] or 0
+
+    # Devolver los datos en formato JSON
+    return JsonResponse({
+        'gastos_por_categoria': list(gastos_por_categoria),
+        'ingresos': ingresos,
+        'gastos': gastos
+    })
 
 def transacciones(request):
     if request.method == 'POST':

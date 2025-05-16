@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="../static/css/home.css">
+<style>
+    .graficos {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+    canvas {
+        max-width: 400px;
+        max-height: 400px;
+    }
+</style> 
+<header>
+    <h1>Bienvenido a tu Gestor de Finanzas, {{ user.username }}</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+            <li><a href="{% url 'transacciones' %}">Transacciones</a></li>
+            <li><a href="{% url 'categorias' %}">Categorías</a></li>
+            <li><a href="{% url 'presupuesto' %}">Presupuesto</a></li>
+            <li><a href="{% url 'metas' %}">Metas</a></li>
+            <li><a href="{% url 'cerrar_sesion'%}">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+</header>
