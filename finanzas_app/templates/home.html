@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Gestor de Finanzas</title>
-    <link rel="stylesheet" href="../static/css/home.css">       
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">     
 </head>
 <body>
     {% include 'header.html' %}
@@ -52,5 +52,5 @@
     </section>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="../static/js/graficos.js"></script>
+<script src="{% static 'js/graficos.js' %}"></script> 
 </html>
