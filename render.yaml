@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: gestor-finanzas
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn finanzas.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: finanzas.settings
+      - key: SECRET_KEY
+        value: tu_clave_secreta
+      - key: DEBUG
+        value: 'False'
