@@ -2,7 +2,7 @@ services:
   - type: web
     name: gestor-finanzas
     env: python
-    buildCommand: "pip install -r requirements.txt"
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
     startCommand: "gunicorn finanzas.wsgi:application"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
