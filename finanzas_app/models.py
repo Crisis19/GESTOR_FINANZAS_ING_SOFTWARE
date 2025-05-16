@@ -3,7 +3,10 @@ from django.contrib.auth.models import User
 <<<<<<< HEAD
 =======
 from django import forms
+<<<<<<< HEAD
 from django.core.exceptions import ValidationError
+=======
+>>>>>>> parent of 0630528 (graficos)
 >>>>>>> 343d669 (Transacciones)
 
 class Categoria(models.Model):
