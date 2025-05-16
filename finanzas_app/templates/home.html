@@ -7,17 +7,26 @@
     <link rel="stylesheet" href="../static/css/home.css">       
 </head>
 <body>
-    {% include 'header.html' %}
+    <header>
+        <h1>Bienvenido a tu Gestor de Finanzas, {{ user.username }}</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="">Transacciones</a></li>
+                <li><a href="{% url 'categorias' %}">Categorías</a></li>
+                <li><a href="{% url 'presupuesto' %}">Presupuesto</a></li>
+                <li><a href="{% url 'metas' %}">Metas</a></li>
+                <li><a href="{% url 'cerrar_sesion'%}">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <section>
         <h2>Resumen de tus finanzas</h2>
         <div>
             <p><strong>Ingresos Totales:</strong> ${{ ingresos }}</p>
             <p><strong>Gastos Totales:</strong> ${{ gastos }}</p>
             <p><strong>Balance:</strong> ${{ balance }}</p>
-        </div>
-        <div class="graficos">
-            <canvas id="graficoPastel" class="graphs"></canvas>
-        <canvas id="graficoBarras" class="graphs"></canvas>
         </div>
     </section>
 
@@ -51,6 +60,4 @@
         </table>
     </section>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="../static/js/graficos.js"></script>
 </html>

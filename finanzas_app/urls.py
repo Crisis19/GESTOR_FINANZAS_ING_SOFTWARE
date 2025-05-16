@@ -17,5 +17,4 @@ urlpatterns = [
     path('crear_categoria/', categoria.crear_categoria, name='crear_categoria'),
     path('definir_monto_maximo/', categoria.definir_monto_maximo, name='definir_monto_maximo'),
     path('transacciones/', views.transacciones, name='transacciones'),
-    path('graficos/', views.datos_graficos, name='graficos'), 
 ]
